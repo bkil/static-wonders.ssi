@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>data URI</title>
+</head>
+<body>
+  <form hidden id=f>
+    <input type=file id=b>
+    <br>
+    <a href=# id=s>embed.svg</a>
+  </form>
+  <div id=d>
+    <!--#echo encoding="none" var="QUERY_STRING_UNESCAPED" -->
+    JavaScript?
+  </div>
+  <script>
+    document.getElementById("f").hidden = "";
+    b = document.getElementById("b");
+    b.type = "file";
+    b.addEventListener("change", function() {
+      r = new FileReader();
+      r.onload = function (e) {
+        img = '<img src=' + e.target.result + ' height=90%>/';
+        s = escape(img).replaceAll("//", "/%2F");
+        window.location.search = '?' + s;
+      };
+      r.readAsDataURL(this.files[0]);
+    }, false);
+    function h() {
+      i = unescape(window.location.search.substring(1));
+      document.getElementById("d").innerHTML = i;
+      i = i.slice(i.indexOf('=') + 1, i.lastIndexOf(' ') - 1);
+      p = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+      document.getElementById("s").href = p + 'img.svg.shtml?' + escape(i);
+    }
+    window.addEventListener('locationchange', h);
+    h();
+  </script>
+</body>
+</html>

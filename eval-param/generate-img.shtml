@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>data URI</title>
+</head>
+<body>
+  <div id=d>
+    <!--#echo encoding="none" var="QUERY_STRING_UNESCAPED" -->
+    JavaScript?
+  </div>
+  <input type=hidden id=f>
+  <script>
+    f = document.getElementById("f");
+    f.type = "file";
+    f.addEventListener("change", function() {
+      r = new FileReader();
+      r.onload = function (e) {
+        img = '<img src=' + e.target.result + ' height=90%>/';
+        s = escape(img).replaceAll("//", "/%2F");
+        window.location.search = '?' + s;
+      };
+      r.readAsDataURL(this.files[0]);
+    }, false);
+    function h() {
+      document.getElementById("d").innerHTML = unescape(window.location.search.substring(1));
+    }
+    window.addEventListener('locationchange', h);
+    h();
+  </script>
+</body>
+</html>

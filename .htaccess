@@ -1,0 +1,6 @@
+AddType text/html .shtml
+AddHandler server-parsed .shtml
+AddOutputFilter INCLUDES .shtml
+XBitHack on
+Options -Indexes +Includes
+SSILegacyExprParser on
