@@ -1,0 +1,13 @@
+<html>
+<head>
+  <title>eval text SSI NoJS</title>
+</head>
+<body>
+  <form>
+    <textarea maxlength=2048 rows=20 cols=72 name=t><!--#echo var="QUERY_STRING_UNESCAPED" --></textarea>
+    <br>
+    <input type=submit>
+  </form>
+  <!--#echo encoding="none" var="QUERY_STRING_UNESCAPED" -->
+</body>
+</html>
