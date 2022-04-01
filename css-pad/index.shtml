@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>CSS fiddle pad</title>
+  <link rel='shortcut icon' type=image/x-icon href=data:image/x-icon;,>
+  <meta name=robots content='noindex,nofollow,noarchive'>
+  <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; default-src 'none'; frame-src 'self'; style-src 'unsafe-inline'; form-action 'self'; navigate-to https://gitlab.com;">
+  <meta name=viewport content='width=device-width, initial-scale=1.0'>
+</head>
+<body>
+  <style>
+    html, body {
+      height: 100%;
+    }
+
+    form {
+      height: calc(100% - 2em);
+    }
+
+    iframe {
+      height: calc(100% - 8px);
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+    }
+
+    textarea, iframe {
+      flex-grow: 1;
+    }
+
+    textarea {
+      min-height: calc(100% - 3em);
+      max-height: calc(100% - 3em);
+      min-width: 20vw;
+      max-width: 80vw;
+      width: 50vw;
+    }
+
+    iframe {
+      min-width: calc(20vw - 16px);
+    }
+  </style>
+
+<!--#if expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)&f=([^&]*)(&e=)?$/" -->
+  <!--#set var="t" value="$1" -->
+  <!--#set var="f" value="$2" -->
+<!--#elif expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)(&e=)?$/" -->
+  <!--#set var="t" value="$1" -->
+  <!--#set var="f" value="$1" -->
+<!--#else -->
+  <!--#set var="t" value="${QUERY_STRING_UNESCAPED}" -->
+  <!--#set var="f" value="" -->
+<!--#endif -->
+  <div>
+    <form action=.>
+      <textarea maxlength=2048 name=t placeholder='Type HTML &amp; CSS here...'><!--#echo var="t" --></textarea>
+      <input type=hidden name=e>
+      <input type=submit>
+    </form>
+
+    <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/css-pad'>source</a>
+  </div>
+
+  <iframe sandbox title=Preview csp="sandbox; base-uri 'none'; default-src 'none'; style-src 'unsafe-inline'; navigate-to 'none';" srcdoc="<!DOCTYPE html><html><body><!--#echo var="f" -->">Preview the above in this &lt;iframes&gt;</iframe>
+</body>
+</html>
