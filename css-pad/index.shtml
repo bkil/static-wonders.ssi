@@ -43,11 +43,7 @@
       min-width: calc(20vw - 16px);
     }
   </style>
-
-<!--#if expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)&f=([^&]*)(&e=)?$/" -->
-  <!--#set var="t" value="$1" -->
-  <!--#set var="f" value="$2" -->
-<!--#elif expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)(&e=)?$/" -->
+<!--#if expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)(&e=)?$/" -->
   <!--#set var="t" value="$1" -->
   <!--#set var="f" value="$1" -->
 <!--#else -->
@@ -57,6 +53,7 @@
   <div>
     <form action=.>
       <textarea maxlength=2048 name=t placeholder='Type HTML &amp; CSS here...'><!--#echo var="t" --></textarea>
+      <!--#comment `e` works around without .htaccess failed decoding of last character -->
       <input type=hidden name=e>
       <input type=submit>
     </form>
@@ -64,6 +61,6 @@
     <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/-/tree/master/css-pad'>source</a>
   </div>
 
-  <iframe sandbox title=Preview csp="sandbox; base-uri 'none'; default-src 'none'; style-src 'unsafe-inline'; navigate-to 'none';" srcdoc="<!DOCTYPE html><html><body><!--#echo var="f" -->">Preview the above in this &lt;iframes&gt;</iframe>
+  <iframe sandbox title=Preview csp="sandbox; base-uri 'none'; default-src 'none'; style-src 'unsafe-inline'; navigate-to 'none';" srcdoc="<!DOCTYPE html><html><body><!--#echo var="f" -->">Preview the above in this &lt;iframe&gt;</iframe>
 </body>
 </html>

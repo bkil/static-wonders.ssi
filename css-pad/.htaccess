@@ -24,6 +24,13 @@ FileETag None
   RewriteEngine on
   RewriteBase /
 
+  # hide private files
+  RewriteCond %{REQUEST_URI} !^/css-pad/(index\.shtml)?$
+  RewriteRule ^ - [L,F]
+
+  RewriteCond %{QUERY_STRING} !^(t=[^&]*)?(&e=)?$
+  RewriteRule ^ - [L,F]
+
   # form submission changes space to "+", change back a few to "%20"
   RewriteCond %{QUERY_STRING} ^([^+]*)[+]+([^+]*)[+]+([^+]*)[+]+([^+]*)[+]+([^+]*)[+]+([^+]*)[+]+([^+]*)[+]+([^+]*)[+]+(.*)$
   RewriteRule ^(.*)$ $1?%1\%20%2\%20%3\%20%4\%20%5\%20%6\%20%7\%20%8\%20%9 [N,QSD]
@@ -33,16 +40,4 @@ FileETag None
   RewriteRule ^(.*)$ $1?%1\%20%2\%20%3 [N,QSD]
   RewriteCond %{QUERY_STRING} ^([^+]*)[+]+(.*)$
   RewriteRule ^(.*)$ $1?%1\%20%2 [N,QSD]
-
-  # separate content for textarea and iframe
-  RewriteCond %{QUERY_STRING} ^t=([^&]*)(&e=)?$
-  RewriteRule ^(.*)$ $1?t=%1&f=%1&e= [QSD]
-
-  # optional: delete newlines within <iframe>
-  RewriteCond %{QUERY_STRING} ^(t=[^&]*&f=[^+]*)((%20)*%0[aAdD])+(.*)$
-  RewriteRule ^(.*)$ $1?%1\%20%4 [N,QSD]
-
-  # hide private files
-  RewriteCond %{REQUEST_URI} !/css-pad/(index\.shtml)?$
-  RewriteRule ^ - [L,F]
 </IfModule>
