@@ -61,7 +61,7 @@
       <input type=submit>
     </form>
 
-    <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/css-pad'>source</a>
+    <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/-/tree/master/css-pad'>source</a>
   </div>
 
   <iframe sandbox title=Preview csp="sandbox; base-uri 'none'; default-src 'none'; style-src 'unsafe-inline'; navigate-to 'none';" srcdoc="<!DOCTYPE html><html><body><!--#echo var="f" -->">Preview the above in this &lt;iframes&gt;</iframe>
