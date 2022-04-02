@@ -7,8 +7,6 @@
   <meta name=robots content='noindex,nofollow,noarchive'>
   <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; default-src 'none'; frame-src 'self'; style-src 'unsafe-inline'; form-action 'self'; navigate-to https://gitlab.com;">
   <meta name=viewport content='width=device-width, initial-scale=1.0'>
-</head>
-<body>
   <style>
     html, body {
       height: 100%;
@@ -43,6 +41,8 @@
       min-width: calc(20vw - 16px);
     }
   </style>
+</head>
+<body>
 <!--#if expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)(&e=)?$/" -->
   <!--#set var="t" value="$1" -->
   <!--#set var="f" value="$1" -->
