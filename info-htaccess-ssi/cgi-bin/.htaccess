@@ -1,7 +1,2 @@
-<IfModule mod_headers.c>
-  Header always set X-Robots-Tag "noindex"
-</IfModule>
-
-Options -Includes +ExecCGI -Indexes
+Options -Includes +ExecCGI
 AddHandler cgi-script .cgi
-XBitHack on
