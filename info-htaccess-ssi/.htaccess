@@ -17,6 +17,6 @@ SSILegacyExprParser on
   RewriteEngine on
   RewriteBase /
 
-  RewriteCond %{REQUEST_URI} \.htaccess$
+  RewriteCond %{REQUEST_URI} /(\.htaccess|README\.md)$
   RewriteRule ^ - [L,F]
 </IfModule>

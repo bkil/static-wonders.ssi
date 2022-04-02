@@ -54,15 +54,6 @@
       <!--#set var="x" value="$badvariable" -->
 
   <tr>
-    <th>exec cgi (mod_cgi)
-    <td><!--#exec cgi="cgi-bin/date.cgi" -->
-  <tr>
-    <th>exec cmd (mod_cgi)
-    <td><!--#exec cmd="date" -->
-  <tr>
-    <th>include virtual (mod_cgi)
-    <td><!--#include virtual="cgi-bin/date.cgi" -->
-  <tr>
     <th>fsize file default
     <td><!--#fsize file="index.shtml" -->
   <tr>
@@ -215,7 +206,7 @@
 
 </table>
 
-<h2>Common if condition syntax</h2>
+<h2 id=if-common>Common if condition syntax</h2>
 <table>
   <tr>
     <th>key
@@ -303,7 +294,7 @@
 
 </table>
 
-<h2>Legacy expression syntax</h2>
+<h2 id=if-legacy>Legacy expression syntax</h2>
 <table>
   <tr>
     <th>key
@@ -358,16 +349,48 @@
 
 </table>
 
-<h2>Advanced expression syntax</h2>
+<h2 id=if-advanced>Advanced expression syntax</h2>
 <!--#include file="new-expr/index.shtml" -->
 
 <h2 id=printenv>printenv</h2>
 <pre><!--#printenv --></pre>
 
-<h2 id=environment>exec cmd environment</h2>
+<h2 id=exec-cmd-cgi>Exec cmd, CGI</h2>
+<table>
+  <tr>
+    <th>key
+    <th>value
+  <tr>
+    <th>exec cmd whoami
+    <td><!--#exec cmd="whoami" -->
+  <tr>
+    <th>exec cmd echo args
+    <td><!--#exec cmd="echo ok" -->
+  <tr>
+    <th>exec cmd /bin/date
+    <td><!--#exec cmd="/bin/date" -->
+  <tr>
+    <th>exec cmd user
+    <td><!--#exec cmd="cgi-bin/date.cgi" -->
+
+  <tr>
+    <th>exec cgi cgi-bin/date.cgi
+    <td><!--#exec cgi="cgi-bin/date.cgi" -->
+  <tr>
+    <th>exec cgi /cgi-bin/date.cgi
+    <td><!--#exec cgi="/cgi-bin/date.cgi" -->
+  <tr>
+    <th>include virtual cgi-bin/date.cgi
+    <td><!--#include virtual="cgi-bin/date.cgi" -->
+  <tr>
+    <th>include virtual /cgi-bin/date.cgi
+    <td><!--#include virtual="/cgi-bin/date.cgi" -->
+</table>
+
+<h2 id=exec-cmd-set>exec cmd environment</h2>
 <pre><!--#exec cmd="set" --></pre>
 
-<h2 id=environment>SSI environment variables</h2>
+<h2 id=ssi-environment>SSI environment variables</h2>
 <table>
   <thead>
     <tr>
@@ -489,6 +512,9 @@
     <tr class=heading><th colspan=2>Occasional
     <tr><th>SERVER_SIGNATURE<td><!--#echo var="SERVER_SIGNATURE" -->
 </table>
+
+<h2 id=find-cgi>Find CGI</h2>
+<pre><!--#exec cgi="cgi-bin/find-cgi.cgi" --></pre>
 
 </body>
 </html>
