@@ -8,6 +8,7 @@
     <br>
     <input type=submit>
   </form>
+  Quirks: add an extra character at the end (like "/" or newline) and replace "//" everywhere in the URI query to "/%2F".
   <!--#echo encoding="none" var="QUERY_STRING_UNESCAPED" -->
 </body>
 </html>
