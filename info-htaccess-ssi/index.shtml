@@ -97,7 +97,7 @@
     <th>include file html
     <td><!--#include file="include.html" -->
   <tr>
-    <th>include multiple file html
+    <th>include double file html
     <td><!--#include file="include.html" file="include.html" -->
 
   <tr>
@@ -206,7 +206,7 @@
 
 </table>
 
-<h2 id=if-common>Common if condition syntax</h2>
+<h2 id=if-common>Common if-condition syntax</h2>
 <table>
   <tr>
     <th>key
@@ -214,7 +214,7 @@
   <tr>
     <th>if true
     <td>
-      <!--#if expr="y" -->
+      <!--#if expr="'y'" -->
         ok
       <!--#endif -->
   <tr>
@@ -230,7 +230,7 @@
     <td>
       <!--#if expr="" -->
         bad
-      <!--#elif expr="y" -->
+      <!--#elif expr="'y'" -->
         ok
       <!--#endif -->
   <tr>
@@ -247,30 +247,30 @@
   <tr>
     <th>if -A
     <td>
-      <!--#if expr="-A index.shtml" -->
+      <!--#if expr="-A 'index.shtml'" -->
         ok
       <!--#endif -->
 
   <tr>
     <th>if NOT -A
     <td>
-      <!--#if expr="-A .htaccess" -->
+      <!--#if expr="-A '.htaccess'" -->
         bad
       <!--#else -->
         ok
       <!--#endif -->
 
   <tr>
-    <th>if lexicography
+    <th>if lexicographical
     <td>
-      <!--#if expr="10 < 2" -->
+      <!--#if expr="'10' < '2'" -->
         ok
       <!--#endif -->
 
   <tr>
-    <th>if NOT lexicography
+    <th>if NOT lexicographical
     <td>
-      <!--#if expr="20 < 1" -->
+      <!--#if expr="'20' < '1'" -->
         bad
       <!--#else -->
         ok
@@ -311,16 +311,16 @@
   <tr>
     <th>if regexp match
     <td>
-      <!--#if expr="123 == /(.)$/" -->
+      <!--#if expr="'123' == /(.)$/" -->
         ok
       <!--#endif -->
 
   <tr>
     <th>if regexp extract
     <td>
-      <!--#if expr="123 == /(.)$/" -->
+      <!--#if expr="'123' == /(.)$/" -->
         <!--#set var="legacy" value="$1" -->
-        <!--#if expr="$legacy = 3" -->
+        <!--#if expr="'$legacy' == '3'" -->
           ok
         <!--#endif -->
       <!--#endif -->
@@ -350,12 +350,21 @@
 </table>
 
 <h2 id=if-advanced>Advanced expression syntax</h2>
-<!--#include file="new-expr/index.shtml" -->
+<!--#include virtual="new-expr/index.shtml" -->
+
+Iframe embed of the same:
+
+<iframe
+  sandbox
+  title='Same as above inlined'
+  src='new-expr/index.shtml'>
+  If the above inlining did not work
+</iframe>
 
 <h2 id=printenv>printenv</h2>
 <pre><!--#printenv --></pre>
 
-<h2 id=exec-cmd-cgi>Exec cmd, CGI</h2>
+<h2 id=exec-cmd-cgi>exec cmd, CGI</h2>
 <table>
   <tr>
     <th>key
