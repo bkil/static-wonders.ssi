@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <title>SSI and htaccess info</title>
+  <link rel='shortcut icon' type=image/x-icon href=data:image/x-icon;,>
+  <meta name=robots content='noindex,nofollow,noarchive'>
+  <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; default-src 'none'; style-src 'unsafe-inline'; navigate-to 'none';">
+  <meta name=viewport content='width=device-width, initial-scale=1.0'>
+  <style>
+    pre {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+<h1>SSI and .htaccess info</h1>
+
+<h2 id=elements>Elements</h2>
+
+<table>
+  <tr>
+    <th>key
+    <th>value
+  <tr>
+    <th>config errmsg default
+    <td>
+      <!--#badcommand -->
+  <tr>
+    <th>config errmsg test
+    <td>
+      <!--#config errmsg="(errmsg)" -->
+      <!--#badcommand -->
+  <tr>
+    <th>comment
+    <td><!--#comment comment -->
+  <tr>
+    <th>comment text
+    <td><!--#comment text="comment" -->
+
+  <tr>
+    <th>config echomsg default echo
+    <td>
+      <!--#echo var="badvariable" -->
+  <tr>
+    <th>config echomsg default set
+    <td>
+      <!--#set var="x" value="$badvariable" -->
+  <tr>
+    <th>config echomsg test
+    <td>
+      <!--#config echomsg="(echomsg undefined)" -->
+      <!--#echo var="badvariable" -->
+      <!--#set var="x" value="$badvariable" -->
+
+  <tr>
+    <th>exec cgi (mod_cgi)
+    <td><!--#exec cgi="cgi-bin/date.cgi" -->
+  <tr>
+    <th>exec cmd (mod_cgi)
+    <td><!--#exec cmd="date" -->
+  <tr>
+    <th>include virtual (mod_cgi)
+    <td><!--#include virtual="cgi-bin/date.cgi" -->
+  <tr>
+    <th>fsize file default
+    <td><!--#fsize file="index.shtml" -->
+  <tr>
+    <th>fsize virtual abbrev
+    <td>
+      <!--#config sizefmt="abbrev" -->
+      <!--#fsize virtual="index.shtml" -->
+
+  <tr>
+    <th>flastmod file default
+    <td>
+      <!--#flastmod file="index.shtml" -->
+  <tr>
+    <th>flastmod virtual locale
+    <td>
+      <!--#config timefmt="%Y-%m-%dT%H:%M:%S.%N%z (%A; %B; %p; %r; %c; %x; %X; %Z; %:z; %::z; %:::z)" -->
+      <!--#flastmod virtual="index.shtml" -->
+
+  <tr>
+    <th>include file onerror default
+    <td><!--#include file="badfile.html" -->
+  <tr>
+    <th>include virtual onerror default
+    <td><!--#include virtual="badfile.html" -->
+  <tr>
+    <th>include virtual onerror test
+    <td><!--#include virtual="badfile.html" onerror="include.html" -->
+  <tr>
+    <th>include virtual shtml args
+    <td><!--#include virtual="include.shtml?q=42" -->
+  <tr>
+    <th>include virtual shtml
+    <td><!--#include virtual="include.shtml" -->
+  <tr>
+    <th>include file shtml
+    <td><!--#include file="include.shtml" -->
+  <tr>
+    <th>echo var of include file shtml
+    <td><!--#echo var="included" -->
+  <tr>
+    <th>include file html
+    <td><!--#include file="include.html" -->
+  <tr>
+    <th>include multiple file html
+    <td><!--#include file="include.html" file="include.html" -->
+
+  <tr>
+    <th>echo decoding url
+    <td>
+      <!--#set var="x" value="%41+B" -->
+      <!--#echo decoding="url" var="x" -->
+  <tr>
+    <th>echo decoding urlencoded
+    <td>
+      <!--#set var="x" value="%41+B" -->
+      <!--#echo decoding="urlencoded" var="x" -->
+  <tr>
+    <th>echo decoding base64
+    <td>
+      <!--#set var="x" value="QUJD" -->
+      <!--#echo decoding="base64" var="x" -->
+  <tr>
+    <th>echo decoding entity
+    <td>
+      <!--#set var="x" value="&#x41;" -->
+      <!--#echo decoding="entity" var="x" -->
+  <tr>
+    <th>echo decoding url+bas64
+    <td>
+      <!--#set var="x" value="%51UJD" -->
+      <!--#echo decoding="url,base64" var="x" -->
+
+  <tr>
+    <th>echo encoding none
+    <td>
+      <!--#set var="x" value="&amp;" -->
+      <!--#echo encoding="none" var="x" -->
+  <tr>
+    <th>echo encoding url
+    <td>
+      <!--#set var="x" value="A B" -->
+      <!--#echo encoding="url" var="x" -->
+  <tr>
+    <th>echo encoding urlencoded
+    <td>
+      <!--#set var="x" value="A B" -->
+      <!--#echo encoding="urlencoded" var="x" -->
+  <tr>
+    <th>echo encoding base64
+    <td>
+      <!--#set var="x" value="AB" -->
+      <!--#echo encoding="base64" var="x" -->
+  <tr>
+    <th>echo encoding url+bas64
+    <td>
+      <!--#set var="x" value="+" -->
+      <!--#echo encoding="url,base64" var="x" -->
+
+  <tr>
+    <th>set decoding url
+    <td>
+      <!--#set decoding="url" var="x" value="%41+B" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set decoding urlencoded
+    <td>
+      <!--#set decoding="urlencoded" var="x" value="%41+B" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set decoding base64
+    <td>
+      <!--#set decoding="base64" var="x" value="QUJD" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set decoding entity
+    <td>
+      <!--#set decoding="entity" var="x" value="&#x41;" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set decoding url+bas64
+    <td>
+      <!--#set decoding="url,base64" var="x" value="%51UJD" -->
+      <!--#echo var="x" -->
+
+  <tr>
+    <th>set encoding entity
+    <td>
+      <!--#set encoding="entity" var="x" value="&amp;" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set encoding url
+    <td>
+      <!--#set encoding="url" var="x" value="A B" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set encoding urlencoded
+    <td>
+      <!--#set encoding="urlencoded" var="x" value="A B" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set encoding base64
+    <td>
+      <!--#set encoding="base64" var="x" value="AB" -->
+      <!--#echo var="x" -->
+  <tr>
+    <th>set encoding url+bas64
+    <td>
+      <!--#set encoding="url,base64" var="x" value="+" -->
+      <!--#echo var="x" -->
+
+</table>
+
+<h2>Common if condition syntax</h2>
+<table>
+  <tr>
+    <th>key
+    <th>value
+  <tr>
+    <th>if true
+    <td>
+      <!--#if expr="y" -->
+        ok
+      <!--#endif -->
+  <tr>
+    <th>if-else
+    <td>
+      <!--#if expr="" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+  <tr>
+    <th>if-elif
+    <td>
+      <!--#if expr="" -->
+        bad
+      <!--#elif expr="y" -->
+        ok
+      <!--#endif -->
+  <tr>
+    <th>if-elif-else
+    <td>
+      <!--#if expr="" -->
+        bad
+      <!--#elif expr="" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if -A
+    <td>
+      <!--#if expr="-A index.shtml" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if NOT -A
+    <td>
+      <!--#if expr="-A .htaccess" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if lexicography
+    <td>
+      <!--#if expr="10 < 2" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if NOT lexicography
+    <td>
+      <!--#if expr="20 < 1" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if or
+    <td>
+      <!--#if expr="'y' || ''" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if not or
+    <td>
+      <!--#if expr="'' || ''" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+</table>
+
+<h2>Legacy expression syntax</h2>
+<table>
+  <tr>
+    <th>key
+    <th>value
+  <tr>
+    <th>if regexp mismatch
+    <td>
+      <!--#if expr="123 == /4/" -->
+        else
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if regexp match
+    <td>
+      <!--#if expr="123 == /(.)$/" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if regexp extract
+    <td>
+      <!--#if expr="123 == /(.)$/" -->
+        <!--#set var="legacy" value="$1" -->
+        <!--#if expr="$legacy = 3" -->
+          ok
+        <!--#endif -->
+      <!--#endif -->
+
+  <tr>
+    <th>set variable substitution
+    <td>
+      <!--#set var="x" value="ok" -->
+      <!--#set var="y" value="$x" -->
+      <!--#echo var="y" -->
+
+  <tr>
+    <th>if var export to reqenv
+    <td>
+      <!--#set var="x" value="y" -->
+      <!--#if expr="'$x' = 'y'" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if substitution from reqenv
+    <td>
+      <!--#if expr="('$REQUEST_METHOD' == 'GET')" -->
+        ok
+      <!--#endif -->
+
+</table>
+
+<h2>Advanced expression syntax</h2>
+<!--#include file="new-expr/index.shtml" -->
+
+<h2 id=printenv>printenv</h2>
+<pre><!--#printenv --></pre>
+
+<h2 id=environment>exec cmd environment</h2>
+<pre><!--#exec cmd="set" --></pre>
+
+<h2 id=environment>SSI environment variables</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Variable
+      <th>Value
+  <tbody>
+    <tr class=heading><th colspan=2>Includes
+    <tr><th>DATE_GMT<td><!--#echo var="DATE_GMT" -->
+    <tr><th>DATE_LOCAL<td><!--#echo var="DATE_LOCAL" -->
+    <tr><th>DOCUMENT_ARGS<td><!--#echo var="DOCUMENT_ARGS" -->
+    <tr><th>DOCUMENT_NAME<td><!--#echo var="DOCUMENT_NAME" -->
+    <tr><th>DOCUMENT_PATH_INFO<td><!--#echo var="DOCUMENT_PATH_INFO" -->
+    <tr><th>DOCUMENT_URI<td><!--#echo var="DOCUMENT_URI" -->
+    <tr><th>LAST_MODIFIED<td><!--#echo var="LAST_MODIFIED" -->
+    <tr><th>QUERY_STRING_UNESCAPED<td><!--#echo var="QUERY_STRING_UNESCAPED" -->
+    <tr><th>USER_NAME<td><!--#echo var="USER_NAME" -->
+
+    <tr class=heading><th colspan=2>Advanced
+    <tr><th>API_VERSION<td><!--#echo var="API_VERSION" -->
+    <tr><th>AUTH_TYPE<td><!--#echo var="AUTH_TYPE" -->
+    <tr><th>CONN_LOG_ID<td><!--#echo var="CONN_LOG_ID" -->
+    <tr><th>CONN_REMOTE_ADDR<td><!--#echo var="CONN_REMOTE_ADDR" -->
+    <tr><th>CONTENT_TYPE<td><!--#echo var="CONTENT_TYPE" -->
+    <tr><th>CONTEXT_DOCUMENT_ROOT<td><!--#echo var="CONTEXT_DOCUMENT_ROOT" -->
+    <tr><th>CONTEXT_PREFIX<td><!--#echo var="CONTEXT_PREFIX" -->
+    <tr><th>DOCUMENT_ROOT<td><!--#echo var="DOCUMENT_ROOT" -->
+    <tr><th>HANDLER<td><!--#echo var="HANDLER" -->
+    <tr><th>HTTP2<td><!--#echo var="HTTP2" -->
+    <tr><th>HTTP_ACCEPT<td><!--#echo var="HTTP_ACCEPT" -->
+    <tr><th>HTTP_COOKIE<td><!--#echo var="HTTP_COOKIE" -->
+    <tr><th>HTTP_FORWARDED<td><!--#echo var="HTTP_FORWARDED" -->
+    <tr><th>HTTP_HOST<td><!--#echo var="HTTP_HOST" -->
+    <tr><th>HTTP_PROXY_CONNECTION<td><!--#echo var="HTTP_PROXY_CONNECTION" -->
+    <tr><th>HTTP_REFERER<td><!--#echo var="HTTP_REFERER" -->
+    <tr><th>HTTPS<td><!--#echo var="HTTPS" -->
+    <tr><th>HTTP_USER_AGENT<td><!--#echo var="HTTP_USER_AGENT" -->
+    <tr><th>IPV6<td><!--#echo var="IPV6" -->
+    <tr><th>IS_SUBREQ<td><!--#echo var="IS_SUBREQ" -->
+    <tr><th>PATH_INFO<td><!--#echo var="PATH_INFO" -->
+    <tr><th>QUERY_STRING<td><!--#echo var="QUERY_STRING" -->
+    <tr><th>REMOTE_ADDR<td><!--#echo var="REMOTE_ADDR" -->
+    <tr><th>REMOTE_HOST<td><!--#echo var="REMOTE_HOST" -->
+    <tr><th>REMOTE_IDENT<td><!--#echo var="REMOTE_IDENT" -->
+    <tr><th>REMOTE_PORT<td><!--#echo var="REMOTE_PORT" -->
+    <tr><th>REMOTE_USER<td><!--#echo var="REMOTE_USER" -->
+    <tr><th>REQUEST_FILENAME<td><!--#echo var="REQUEST_FILENAME" -->
+    <tr><th>REQUEST_LOG_ID<td><!--#echo var="REQUEST_LOG_ID" -->
+    <tr><th>REQUEST_METHOD<td><!--#echo var="REQUEST_METHOD" -->
+    <tr><th>REQUEST_SCHEME<td><!--#echo var="REQUEST_SCHEME" -->
+    <tr><th>REQUEST_STATUS<td><!--#echo var="REQUEST_STATUS" -->
+    <tr><th>REQUEST_URI<td><!--#echo var="REQUEST_URI" -->
+    <tr><th>SCRIPT_FILENAME<td><!--#echo var="SCRIPT_FILENAME" -->
+    <tr><th>SCRIPT_GROUP<td><!--#echo var="SCRIPT_GROUP" -->
+    <tr><th>SCRIPT_USER<td><!--#echo var="SCRIPT_USER" -->
+    <tr><th>SERVER_ADMIN<td><!--#echo var="SERVER_ADMIN" -->
+    <tr><th>SERVER_NAME<td><!--#echo var="SERVER_NAME" -->
+    <tr><th>SERVER_PORT<td><!--#echo var="SERVER_PORT" -->
+    <tr><th>SERVER_PROTOCOL<td><!--#echo var="SERVER_PROTOCOL" -->
+    <tr><th>SERVER_SOFTWARE<td><!--#echo var="SERVER_SOFTWARE" -->
+    <tr><th>THE_REQUEST<td><!--#echo var="THE_REQUEST" -->
+    <tr><th>TIME<td><!--#echo var="TIME" -->
+    <tr><th>TIME_DAY<td><!--#echo var="TIME_DAY" -->
+    <tr><th>TIME_HOUR<td><!--#echo var="TIME_HOUR" -->
+    <tr><th>TIME_MIN<td><!--#echo var="TIME_MIN" -->
+    <tr><th>TIME_MON<td><!--#echo var="TIME_MON" -->
+    <tr><th>TIME_SEC<td><!--#echo var="TIME_SEC" -->
+    <tr><th>TIME_WDAY<td><!--#echo var="TIME_WDAY" -->
+    <tr><th>TIME_YEAR<td><!--#echo var="TIME_YEAR" -->
+
+    <tr class=heading><th colspan=2>Printenv
+    <tr><th>DATE_GMT<td><!--#echo var="DATE_GMT" -->
+    <tr><th>DATE_LOCAL<td><!--#echo var="DATE_LOCAL" -->
+    <tr><th>DOCUMENT_NAME<td><!--#echo var="DOCUMENT_NAME" -->
+    <tr><th>GATEWAY_INTERFACE<td><!--#echo var="GATEWAY_INTERFACE" -->
+    <tr><th>HTTP_ACCEPT_ENCODING<td><!--#echo var="HTTP_ACCEPT_ENCODING" -->
+    <tr><th>HTTP_ACCEPT_LANGUAGE<td><!--#echo var="HTTP_ACCEPT_LANGUAGE" -->
+    <tr><th>HTTP_CACHE_CONTROL<td><!--#echo var="HTTP_CACHE_CONTROL" -->
+    <tr><th>HTTP_CONNECTION<td><!--#echo var="HTTP_CONNECTION" -->
+    <tr><th>HTTP_DNT<td><!--#echo var="HTTP_DNT" -->
+    <tr><th>HTTP_SAVE_DATA<td><!--#echo var="HTTP_SAVE_DATA" -->
+    <tr><th>HTTP_SEC_GPC<td><!--#echo var="HTTP_SEC_GPC" -->
+    <tr><th>HTTP_UPGRADE_INSECURE_REQUESTS<td><!--#echo var="HTTP_UPGRADE_INSECURE_REQUESTS" -->
+    <tr><th>PATH<td><!--#echo var="PATH" -->
+    <tr><th>SCRIPT_NAME<td><!--#echo var="SCRIPT_NAME" -->
+    <tr><th>SERVER_ADDR<td><!--#echo var="SERVER_ADDR" -->
+
+    <tr class=heading><th colspan=2>set
+    <tr><th>BASH<td><!--#echo var="BASH" -->
+    <tr><th>BASHOPTS<td><!--#echo var="BASHOPTS" -->
+    <tr><th>BASH_ALIASES<td><!--#echo var="BASH_ALIASES" -->
+    <tr><th>BASH_ARGC<td><!--#echo var="BASH_ARGC" -->
+    <tr><th>BASH_ARGV<td><!--#echo var="BASH_ARGV" -->
+    <tr><th>BASH_CMDS<td><!--#echo var="BASH_CMDS" -->
+    <tr><th>BASH_EXECUTION_STRING<td><!--#echo var="BASH_EXECUTION_STRING" -->
+    <tr><th>BASH_LINENO<td><!--#echo var="BASH_LINENO" -->
+    <tr><th>BASH_SOURCE<td><!--#echo var="BASH_SOURCE" -->
+    <tr><th>BASH_VERSINFO<td><!--#echo var="BASH_VERSINFO" -->
+    <tr><th>BASH_VERSION<td><!--#echo var="BASH_VERSION" -->
+    <tr><th>DIRSTACK<td><!--#echo var="DIRSTACK" -->
+    <tr><th>EUID<td><!--#echo var="EUID" -->
+    <tr><th>GROUPS<td><!--#echo var="GROUPS" -->
+    <tr><th>HOSTNAME<td><!--#echo var="HOSTNAME" -->
+    <tr><th>HOSTTYPE<td><!--#echo var="HOSTTYPE" -->
+    <tr><th>IFS<td><!--#echo var="IFS" -->
+    <tr><th>MACHTYPE<td><!--#echo var="MACHTYPE" -->
+    <tr><th>OPTERR<td><!--#echo var="OPTERR" -->
+    <tr><th>OPTIND<td><!--#echo var="OPTIND" -->
+    <tr><th>OSTYPE<td><!--#echo var="OSTYPE" -->
+    <tr><th>POSIXLY_CORRECT<td><!--#echo var="POSIXLY_CORRECT" -->
+    <tr><th>PPID<td><!--#echo var="PPID" -->
+    <tr><th>PS4<td><!--#echo var="PS4" -->
+    <tr><th>PWD<td><!--#echo var="PWD" -->
+    <tr><th>SHELL<td><!--#echo var="SHELL" -->
+    <tr><th>SHELLOPTS<td><!--#echo var="SHELLOPTS" -->
+    <tr><th>SHLVL<td><!--#echo var="SHLVL" -->
+    <tr><th>TERM<td><!--#echo var="TERM" -->
+    <tr><th>UID<td><!--#echo var="UID" -->
+
+    <tr class=heading><th colspan=2>Occasional
+    <tr><th>SERVER_SIGNATURE<td><!--#echo var="SERVER_SIGNATURE" -->
+</table>
+
+</body>
+</html>

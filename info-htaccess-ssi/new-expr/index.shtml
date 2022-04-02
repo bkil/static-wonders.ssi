@@ -1,0 +1,126 @@
+<table>
+  <tr>
+    <th>key
+    <th>value
+
+  <tr>
+    <th>if regexp match
+    <td>
+      <!--#if expr="'123' =~ /^.*(.)$/" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if regexp not match
+    <td>
+      <!--#if expr="'123' !~ /4/" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if in wordlist
+    <td>
+      <!--#if expr="'a' -in ('a','b')" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if NOT in wordlist
+    <td>
+      <!--#if expr="'c' -in ('a','b')" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if int lt
+    <td>
+      <!--#if expr="2 -lt 10" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if NOT int lt
+    <td>
+      <!--#if expr="20 -lt 3" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if reqenv()
+    <td>
+      <!--#if expr='(reqenv("REQUEST_METHOD") == "GET")' -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if v()
+    <td>
+      <!--#if expr='(v("REQUEST_METHOD") == "GET")' -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if percent variable
+    <td>
+      <!--#if expr="(%{REQUEST_METHOD} == 'GET')" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if percent func requenv
+    <td>
+      <!--#if expr="(%{reqenv:REQUEST_METHOD} == 'GET')" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if percent func tolower
+    <td>
+      <!--#if expr="(%{tolower:'A'} == 'a')" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if parenthesis func tolower
+    <td>
+      <!--#if expr="(tolower('A') == 'a')" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if -ipmatch
+    <td>
+      <!--#if expr="192.168.42.42 -ipmatch 192.168.42.0/24" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if NOT -ipmatch
+    <td>
+      <!--#if expr="192.168.42.42 -ipmatch 192.168.0.0/24" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if -strmatch
+    <td>
+      <!--#if expr="'bat' -strmatch 'b?t'" -->
+        ok
+      <!--#endif -->
+
+  <tr>
+    <th>if -strmatch mismatch
+    <td>
+      <!--#if expr="'bat' -strmatch 'h?t'" -->
+        bad
+      <!--#else -->
+        ok
+      <!--#endif -->
+
+</table>

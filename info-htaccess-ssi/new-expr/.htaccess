@@ -1,0 +1,5 @@
+# regex backreferencing is buggy in the new one
+# $1 won't propagate to nested expressions, only $0
+# Seemingly third party server support is also incomplete
+
+SSILegacyExprParser off

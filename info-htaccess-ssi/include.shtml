@@ -1,0 +1,2 @@
+<!--# set var="included" value="included $QUERY_STRING" -->
+<!--# echo var="included" -->
