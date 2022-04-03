@@ -106,6 +106,9 @@
     <th>include file cgi
     <td><!--#include file="cgi-bin/date.cgi" -->
   <tr>
+    <th>include virtual cgi
+    <td><!--#include virtual="cgi-bin/date.cgi" -->
+  <tr>
     <th>echo var of include file shtml
     <td><!--#echo var="included" -->
   <tr>
@@ -403,6 +406,12 @@ Iframe embed of the same:
   <tr>
     <th>exec cgi /cgi-bin/date.cgi
     <td><!--#exec cgi="/cgi-bin/date.cgi" -->
+  <tr>
+    <th>exec cgi cgi-bin/check-writable.cgi
+    <td><!--#exec cgi="cgi-bin/check-writable.cgi" -->
+  <tr>
+    <th>exec cgi /cgi-bin/check-writable.cgi
+    <td><!--#exec cgi="/cgi-bin/check-writable.cgi" -->
   <tr>
     <th>include virtual cgi-bin/date.cgi
     <td><!--#include virtual="cgi-bin/date.cgi" -->

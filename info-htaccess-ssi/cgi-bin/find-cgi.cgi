@@ -1,7 +1,10 @@
 #!/bin/sh
 echo "Content-type: text/plain"
 echo
-[ -f found-cgi.txt ] || {
+
+if [ -f found-cgi.txt ]; then
+  cat found-cgi.txt
+else
 #  find /usr -iregex '.*cgi\>.*'
 #  find /var -iregex '.*cgi\>.*'
 cat << EOF |
@@ -198,5 +201,6 @@ EOF
   while read D; do
     ls -l "$D"/*cgi* && echo " $D"
   done
-} 2>/dev/null > found-cgi.txt
-cat found-cgi.txt
+} 2>/dev/null |
+tee found-cgi.txt
+fi

@@ -11,6 +11,20 @@ Is all CGI functionality failing?
 * Or even one level above that to a special subfolder visible through via FTP.
 * If that still doesn't help, you may not have permission to run user uploaded cgi at all. Consider politely asking your host to enable CGI.
 
+## File creation debug
+
+Can your CGI not create files?
+
+* The parent directory must be made writable by the user running the web server (or by everybody).
+* Ensure that the full path leading towards this file is also at least readable (listable) by the same.
+
+## File modification debug
+
+Can your CGI not change the contents of existing files?
+
+* The file must be made writable by the user running the web server (or by everybody).
+* Ensure that the full path leading towards this file is also at least readable (listable) by the same.
+
 ## .htaccess debug
 
 Does your .htaccess rules seem to have no effect?
