@@ -11,6 +11,17 @@
     pre {
       white-space: pre-wrap;
     }
+
+    th, td {
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      padding: 4px;
+    }
+
+    th:first-child, td:first-child {
+      border-right-style: dotted;
+      border-right-width: 1px;
+    }
   </style>
 </head>
 <body>
@@ -31,6 +42,7 @@
     <td>
       <!--#config errmsg="(errmsg)" -->
       <!--#badcommand -->
+      <!--#echo badtag="42" -->
   <tr>
     <th>comment
     <td><!--#comment comment -->
@@ -69,7 +81,7 @@
   <tr>
     <th>flastmod virtual locale
     <td>
-      <!--#config timefmt="%Y-%m-%dT%H:%M:%S.%N%z (%A; %B; %p; %r; %c; %x; %X; %Z; %:z; %::z; %:::z)" -->
+      <!--#config timefmt="%Y-%m-%dT%H:%M:%S%z (%A; %B; %p; %r; %c; %x; %X; %Z)" -->
       <!--#flastmod virtual="index.shtml" -->
 
   <tr>
@@ -90,6 +102,9 @@
   <tr>
     <th>include file shtml
     <td><!--#include file="include.shtml" -->
+  <tr>
+    <th>include file cgi
+    <td><!--#include file="cgi-bin/date.cgi" -->
   <tr>
     <th>echo var of include file shtml
     <td><!--#echo var="included" -->
