@@ -2,4 +2,6 @@
 # $1 won't propagate to nested expressions, only $0
 # Seemingly third party server support is also incomplete
 
-SSILegacyExprParser off
+<IfModule mod_include.c>
+  SSILegacyExprParser off
+</IfModule>

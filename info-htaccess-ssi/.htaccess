@@ -6,12 +6,14 @@
 #  Header always set Content-Security-Policy "sandbox allow-forms; base-uri 'none'; default-src 'none'; frame-src 'self'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors *; navigate-to https://gitlab.com;"
 </IfModule>
 
-AddType text/html .shtml
-AddOutputFilter INCLUDES;DEFLATE .shtml
-Options +Includes -Indexes
-AddHandler server-parsed .shtml
-XBitHack on
-SSILegacyExprParser on
+<IfModule mod_include.c>
+  AddType text/html .shtml
+  AddOutputFilter INCLUDES;DEFLATE .shtml
+  Options +Includes -Indexes
+  AddHandler server-parsed .shtml
+  XBitHack on
+  SSILegacyExprParser on
+</IfModule>
 
 <IfModule mod_rewrite.c>
   RewriteEngine on
