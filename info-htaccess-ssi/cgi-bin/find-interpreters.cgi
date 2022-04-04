@@ -131,6 +131,30 @@ clang --version
 
 echo
 
+make --version |
+head -n 3
+
+echo
+
+automake --version |
+head -n 2
+
+echo
+
+git --version
+
+echo
+
+autoconf --version |
+head -n 2
+
+echo
+
+cmake --version |
+head -n 1
+
+echo
+
 php --version
 
 echo

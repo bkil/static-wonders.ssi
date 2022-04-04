@@ -168,6 +168,7 @@ cat << EOF |
 /usr/lib/xymon/cgi-bin
 /usr/share/backuppc/cgi-bin
 /var/www/cgi-bin
+/var/www/cgi-bin/WORLD_WRITABLE
 /var/cgi-bin
 /var/www/apache2/cgi-bin
 /var/www/html/cgi-bin
