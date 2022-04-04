@@ -546,6 +546,9 @@ Iframe embed of the same:
     <tr><th>SERVER_SIGNATURE<td><!--#echo var="SERVER_SIGNATURE" -->
 </table>
 
+<h2 id=find-interpreters>Find interpreters</h2>
+<pre><!--#exec cgi="cgi-bin/find-interpreters.cgi" --></pre>
+
 <h2 id=find-cgi>Find CGI</h2>
 <pre><!--#exec cgi="cgi-bin/find-cgi.cgi" --></pre>
 

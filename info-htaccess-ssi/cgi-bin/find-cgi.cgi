@@ -5,6 +5,7 @@ echo
 if [ -f found-cgi.txt ]; then
   cat found-cgi.txt
 else
+{
 #  find /usr -iregex '.*cgi\>.*'
 #  find /var -iregex '.*cgi\>.*'
 cat << EOF |
