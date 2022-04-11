@@ -15,9 +15,12 @@ It can make CGI response quicker with less standard deviation and less timeouts 
 The following efficiency metrics influence response time:
 
 * the size of the CGI script or binary itself
+* the number of relocations, segments and sections
 * the size of any needed interpreter or dynamic linker
 * the number of attempts and the size of each file, folder and library being accessed
+* library initialization
 * parsing, compiling and any other computation by the interpreter on startup
+* number of context switches, syscalls
 * runtime performance and memory overhead of the interpreter
 * peak memory consumption: RSS and VMEM
 * output buffering
