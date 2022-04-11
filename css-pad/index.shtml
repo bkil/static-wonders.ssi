@@ -4,6 +4,7 @@
   <meta charset=utf-8>
   <title>CSS fiddle pad</title>
   <link rel='shortcut icon' type=image/x-icon href=data:image/x-icon;,>
+  <meta http-equiv=x-dns-prefetch-control content=off>
   <meta name=robots content='noindex,nofollow,noarchive'>
   <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; default-src 'none'; frame-src 'self'; img-src data:; style-src 'unsafe-inline'; form-action 'self'; navigate-to https://gitlab.com;">
   <meta name=viewport content='width=device-width, initial-scale=1.0'>
@@ -65,7 +66,7 @@
     sandbox
     title=Preview
     csp="sandbox; base-uri 'none'; default-src 'none'; img-src data:; style-src 'unsafe-inline'; navigate-to 'none';"
-    srcdoc="<!DOCTYPE html><html><body><!--#echo var='f' -->">
+    srcdoc="<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=off><meta name=robots content='noindex,nofollow,noarchive'></head><body><!--#echo var='f' -->">
     Preview the above in this &lt;iframe&gt;
   </iframe>
 </body>
