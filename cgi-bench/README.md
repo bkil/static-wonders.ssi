@@ -24,16 +24,16 @@ The following efficiency metrics influence response time:
 
 ### Tools
 
-* ldd a.out
-* objdump -x a.out
-* readelf -a a.out
-* hd a.out
-* strace ./a.out
-* valgrind -v --tool=memcheck ./a.out
+* `ldd a.out`
+* `objdump -x a.out`
+* `readelf -a a.out`
+* `hd a.out`
+* `strace ./a.out`
+* `valgrind -v --tool=memcheck ./a.out`
 * `gdb -ex "b _exit" -ex "run" ./a.out`, on another terminal: `pmap -x $(pidof a.out)`
 * `gdb -ex "b _exit" -ex "run ./hi.py.cgi" $(which python)`
 * `gdb -ex "catch syscall" -ex "run" ./hi.write.asm.c.cgi`
-* perf stat -e instructions:u ./a.out
+* `perf stat -e instructions:u ./a.out`
 
 ## Results
 
@@ -89,5 +89,5 @@ Tips by elegant invention:
 * `-flto` instead of `-ffunction-sections -fdata-sections -Wl,--gc-sections`
 * `-W -Wall -Wextra`
 * `-fno-pie -no-pie` for static
-* -Wl,--no-ld-generated-unwind-info
+* `-Wl,--no-ld-generated-unwind-info`
 * https://interrupt.memfault.com/blog/best-and-worst-gcc-clang-compiler-flags
