@@ -21,6 +21,11 @@ Demonstrating what you can achieve without dynamic server side scripting or appl
 * https://nginx.org/en/docs/http/ngx_http_ssi_module.html
 * https://github.com/nginx/nginx/blob/a64190933e06758d50eea926e6a55974645096fd/src/http/modules/ngx_http_ssi_filter_module.c#L241
 
+### lighttpd
+
+* https://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModSSI
+* https://github.com/lighttpd/lighttpd1.4/blob/master/src/mod_ssi.c
+
 ### IIS
 
 ## Documentation
