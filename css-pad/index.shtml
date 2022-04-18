@@ -59,7 +59,7 @@
       <input type=submit>
     </form>
 
-    <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/-/tree/master/css-pad'>source</a>
+    <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/-/tree/master/css-pad' target=_blank>source</a>
   </div>
 
   <iframe
