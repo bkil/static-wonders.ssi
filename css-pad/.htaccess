@@ -29,11 +29,11 @@ FileETag None
   RewriteCond %{REQUEST_URI} !^/css-pad/(index\.shtml)?$
   RewriteRule ^ - [L,F]
 
-  RewriteCond %{QUERY_STRING} !^(t=[^&]*)?(&e=)?$
+  RewriteCond %{QUERY_STRING} !^(t=[^&]*(&s=[^&]*)?)?(&e=)?$
   RewriteRule ^ - [L,F]
 
   # append padding at end to work around decoding last character via SSI
-  RewriteCond %{QUERY_STRING} ^(t=[^&]*)$
+  RewriteCond %{QUERY_STRING} ^(t=[^&]*(&s=[^&]*)?)$
   RewriteRule ^(.*)$ $1?%1&e= [QSD]
 
   # form submission changes space to "+", change back a few to "%20"

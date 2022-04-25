@@ -13,11 +13,7 @@
       height: 100%;
     }
 
-    form {
-      height: calc(100% - 2em);
-    }
-
-    iframe {
+    form, iframe {
       height: calc(100% - 8px);
     }
 
@@ -26,16 +22,32 @@
       display: flex;
     }
 
-    textarea, iframe {
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form, iframe {
       flex-grow: 1;
     }
 
     textarea {
-      min-height: calc(100% - 3em);
-      max-height: calc(100% - 3em);
+      min-height: calc(50% - 1.5em);
+      max-height: calc(50% - 1.5em);
       min-width: 20vw;
       max-width: 80vw;
       width: 50vw;
+    }
+
+    [name="t"] {
+      width: calc(100% - 6px);
+      resize: none;
+    }
+
+    input[type="submit"] {
+      padding: 0.2em;
+      margin-left: 1em;
+      margin-right: 1em;
     }
 
     iframe {
@@ -45,21 +57,29 @@
 </head>
 <body>
 <!--#if expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)(&e=)?$/" -->
-  <!--#set var="t" value="$1" -->
-  <!--#set var="f" value="$1" -->
+  <!--#set decoding="urlencoded" var="t" value="$1" -->
+  <!--#set decoding="urlencoded" var="s" value="" -->
+  <!--#set decoding="urlencoded" var="f" value="$1" -->
+<!--#elif expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)&s=([^&]*)(&e=)?$/" -->
+  <!--#set decoding="urlencoded" var="t" value="$1" -->
+  <!--#set decoding="urlencoded" var="s" value="$2" -->
+  <!--#set decoding="urlencoded" var="f" value="<style>$2</style>$1" -->
 <!--#else -->
-  <!--#set var="t" value="${QUERY_STRING_UNESCAPED}" -->
-  <!--#set var="f" value="" -->
+  <!--#set decoding="urlencoded" var="t" value="${QUERY_STRING_UNESCAPED}" -->
+  <!--#set decoding="urlencoded" var="s" value="" -->
+  <!--#set decoding="urlencoded" var="f" value="" -->
 <!--#endif -->
   <div>
     <form action=.>
-      <textarea maxlength=2048 name=t placeholder='Type HTML &amp; CSS here...'><!--#echo var="t" --></textarea>
+      <textarea maxlength=2048 name=t placeholder='Type HTML here...'><!--#echo var="t" --></textarea>
+      <textarea maxlength=2048 name=s placeholder='Type CSS here...'><!--#echo var="s" --></textarea>
       <!--#comment `e` works around failed decoding of last character without needing .htaccess -->
       <input type=hidden name=e>
-      <input type=submit>
+      <div>
+        <input type=submit>
+        <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/-/tree/master/css-pad' target=_blank>source</a>
+      </div>
     </form>
-
-    <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/-/tree/master/css-pad' target=_blank>source</a>
   </div>
 
   <iframe
