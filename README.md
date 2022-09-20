@@ -28,6 +28,12 @@ Demonstrating what you can achieve without dynamic server side scripting or appl
 
 ### IIS
 
+### busybox httpd
+
+Only #include is supported:
+
+* https://git.busybox.net/busybox/tree/networking/httpd_ssi.c
+
 ## Documentation
 
 * https://www.gilesorr.com/blog/ssi-variables-apache-nginx.html
