@@ -77,7 +77,7 @@
       <input type=hidden name=e>
       <div>
         <input type=submit>
-        <a rel=noopener href='https://gitlab.com/bkil/static-wonders.ssi/-/tree/master/css-pad' target=_blank>source</a>
+        <a rel=noopener href='https://github.com/bkil/static-wonders.ssi/tree/master/css-pad' target=_blank>source</a>
       </div>
     </form>
   </div>
