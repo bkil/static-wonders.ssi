@@ -56,18 +56,15 @@
   </style>
 </head>
 <body>
-<!--#if expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)(&e=)?$/" -->
-  <!--#set decoding="urlencoded" var="t" value="$1" -->
-  <!--#set decoding="urlencoded" var="s" value="" -->
-  <!--#set decoding="urlencoded" var="f" value="$1" -->
-<!--#elif expr="$QUERY_STRING_UNESCAPED = /^t=([^&]*)&s=([^&]*)(&e=)?$/" -->
+<!--#if expr="$QUERY_STRING_UNESCAPED = /^t=((?:[^&]|&+?[^&es]|&+?[es][^=])*?)&s=([^&]*)(?:&e=)?$/" -->
   <!--#set decoding="urlencoded" var="t" value="$1" -->
   <!--#set decoding="urlencoded" var="s" value="$2" -->
-  <!--#set decoding="urlencoded" var="f" value="<style>$2</style>$1" -->
+<!--#elif expr="$QUERY_STRING_UNESCAPED = /^t=((?:[^&]|&+?[^&es]+?)*?)(?:&e=)?$/" -->
+  <!--#set decoding="urlencoded" var="t" value="$1" -->
+  <!--#set decoding="urlencoded" var="s" value="" -->
 <!--#else -->
   <!--#set decoding="urlencoded" var="t" value="${QUERY_STRING_UNESCAPED}" -->
   <!--#set decoding="urlencoded" var="s" value="" -->
-  <!--#set decoding="urlencoded" var="f" value="" -->
 <!--#endif -->
   <div>
     <form action=.>
@@ -86,7 +83,7 @@
     sandbox
     title=Preview
     csp="sandbox; base-uri 'none'; default-src 'none'; img-src data:; style-src 'unsafe-inline'; form-action 'none'; navigate-to 'none';"
-    srcdoc="<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=off><meta name=robots content='noindex,nofollow,noarchive'></head><body><!--#echo var='f' -->">
+    srcdoc="<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=off><meta name=robots content='noindex,nofollow,noarchive'></head><body><style><!--#echo var='s' --></style><!--#echo var='t' -->">
     Preview the above in this &lt;iframe&gt;
   </iframe>
 </body>
