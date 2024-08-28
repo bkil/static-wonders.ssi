@@ -15,7 +15,7 @@
 
 AddType text/html .shtml
 AddOutputFilter INCLUDES;DEFLATE .shtml
-Options +IncludesNOEXEC -Indexes -ExecCGI
+Options +IncludesNOEXEC -Indexes
 AddHandler server-parsed .shtml
 XBitHack on
 SSILegacyExprParser on
