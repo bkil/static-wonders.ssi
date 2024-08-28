@@ -6,7 +6,7 @@
   <link rel='shortcut icon' type=image/x-icon href=data:image/x-icon;,>
   <meta http-equiv=x-dns-prefetch-control content=off>
   <meta name=robots content='noindex,nofollow,noarchive'>
-  <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; default-src 'none'; frame-src 'self'; img-src data:; media-src data: http://vod.y5.hu; style-src 'unsafe-inline'; form-action http://bkil.hu; navigate-to https://gitlab.com;">
+  <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; default-src 'none'; img-src data:; media-src data: http://vod.y5.hu; style-src 'unsafe-inline'; form-action http://bkil.hu; navigate-to https://gitlab.com https://github.com;">
   <meta name=viewport content='width=device-width, initial-scale=1.0'>
   <style>
     html, body {
@@ -81,9 +81,10 @@
 
   <iframe
     sandbox
+    credentialless
     title=Preview
     csp="sandbox; base-uri 'none'; default-src 'none'; img-src data:; media-src data: http://vod.y5.hu; style-src 'unsafe-inline'; form-action 'none'; navigate-to 'none';"
-    srcdoc="<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=off><meta name=robots content='noindex,nofollow,noarchive'></head><body><style><!--#echo var='s' --></style><!--#echo var='t' -->">
+    srcdoc="<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=x-dns-prefetch-control content=off><meta name=robots content='noindex,nofollow,noarchive'><meta http-equiv='Content-Security-Policy' content=&quot;base-uri 'none'; default-src 'none'; img-src data:; media-src data: http://vod.y5.hu; style-src 'unsafe-inline'; form-action 'none'; navigate-to 'none';&quot;><style><!--#echo var='s' --></style></head><body><!--#echo var='t' -->&lt;/body>&lt;/html>"
     Preview the above in this &lt;iframe&gt;
   </iframe>
 </body>
